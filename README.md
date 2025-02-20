@@ -1,7 +1,7 @@
-<img src="https://raw.githubusercontent.com/vision-io/client-cli/img/vision-logo-full.svg" alt="Vision logo" align="right" width="120" />
+<img src="https://raw.githubusercontent.com/vision-web3-foundation/client-cli/img/vision-logo-full.svg" alt="Vision logo" align="right" width="120" />
 
-[![CI](https://github.com/vision-io/client-cli/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/vision-io/client-cli/actions/workflows/ci.yaml) 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vision-io_client-cli2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vision-io_client-cli2)
+[![CI](https://github.com/vision-web3-foundation/client-cli/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/vision-web3-foundation/client-cli/actions/workflows/ci.yaml) 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vision-web3-foundation_client-cli2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vision-web3-foundation_client-cli2)
 
 # Vision Client CLI
 
@@ -18,6 +18,7 @@ The Vision Client CLI offers the following functionalities:
 1. Retrieve the balance of a token
 2. Retrieve the service node bids
 3. Transfer tokens
+
 
 ## 2. Installation
 
@@ -63,7 +64,7 @@ poetry config virtualenvs.in-project true
 Clone the repository to your local machine:
 
 ```bash
-$ git clone https://github.com/vision-io/client-cli.git
+$ git clone https://github.com/vision-web3-foundation/client-cli.git
 $ cd client-cli
 $ virtualenv env
 $ source env/bin/activate
