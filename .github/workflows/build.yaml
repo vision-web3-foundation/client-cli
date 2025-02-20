@@ -31,7 +31,7 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - uses: pantos-io/ci-workflows/.github/actions/install-poetry@v1
+      - uses: vision-web3-foundation/ci-workflows/.github/actions/install-poetry@v1
 
       - name: Build package
         run: |

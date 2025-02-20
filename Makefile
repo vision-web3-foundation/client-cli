@@ -1,5 +1,5 @@
-PANTOS_CLIENT_CLI_VERSION := $(shell poetry version -s)
-PYTHON_FILES := pantos/cli tests
+VISION_CLIENT_CLI_VERSION := $(shell poetry version -s)
+PYTHON_FILES := vision/cli tests
 
 .PHONY: check-version
 check-version:
@@ -63,7 +63,7 @@ test:
 
 .PHONY: coverage
 coverage:
-	poetry run python3 -m pytest --cov-report term-missing --cov=pantos tests
+	poetry run python3 -m pytest --cov-report term-missing --cov=vision tests
 
 .PHONY: wheel
 wheel:
@@ -71,38 +71,38 @@ wheel:
 
 .PHONY: docker
 docker:
-	docker build -t pantosio/pantos-client .
+	docker build -t visionio/vision-client .
 
 .PHONY: install
-install: dist/pantos_client_cli-$(PANTOS_CLIENT_CLI_VERSION)-py3-none-any.whl
-	poetry run python3 -m pip install dist/pantos_client_cli-$(PANTOS_CLIENT_CLI_VERSION)-py3-none-any.whl
+install: dist/vision_client_cli-$(VISION_CLIENT_CLI_VERSION)-py3-none-any.whl
+	poetry run python3 -m pip install dist/vision_client_cli-$(VISION_CLIENT_CLI_VERSION)-py3-none-any.whl
 
 .PHONY: uninstall
 uninstall:
-	poetry run python3 -m pip uninstall -y pantos-client-cli
+	poetry run python3 -m pip uninstall -y vision-client-cli
 
 .PHONY: local-common
 local-common:
-ifndef DEV_PANTOS_COMMON
-	$(error Please define DEV_PANTOS_COMMON variable)
+ifndef DEV_VISION_COMMON
+	$(error Please define DEV_VISION_COMMON variable)
 endif
-	$(eval CURRENT_COMMON := $(shell echo .venv/lib/python3.*/site-packages/pantos/common))
+	$(eval CURRENT_COMMON := $(shell echo .venv/lib/python3.*/site-packages/vision/common))
 	@if [ -d "$(CURRENT_COMMON)" ]; then \
 		rm -rf "$(CURRENT_COMMON)"; \
-		ln -s "$(DEV_PANTOS_COMMON)" "$(CURRENT_COMMON)"; \
+		ln -s "$(DEV_VISION_COMMON)" "$(CURRENT_COMMON)"; \
 	else \
 		echo "Directory $(CURRENT_COMMON) does not exist"; \
 	fi
 
 .PHONY: local-client-library
 local-client-library:
-ifndef DEV_PANTOS_CLIENT_LIBRARY
-	$(error Please define DEV_PANTOS_CLIENT_LIBRARY variable)
+ifndef DEV_VISION_CLIENT_LIBRARY
+	$(error Please define DEV_VISION_CLIENT_LIBRARY variable)
 endif
-	$(eval CURRENT_CLIENT_LIBRARY := $(shell echo .venv/lib/python3.*/site-packages/pantos/client))
+	$(eval CURRENT_CLIENT_LIBRARY := $(shell echo .venv/lib/python3.*/site-packages/vision/client))
 	@if [ -d "$(CURRENT_CLIENT_LIBRARY)" ]; then \
 		rm -rf "$(CURRENT_CLIENT_LIBRARY)"; \
-		ln -s "$(DEV_PANTOS_CLIENT_LIBRARY)" "$(CURRENT_CLIENT_LIBRARY)"; \
+		ln -s "$(DEV_VISION_CLIENT_LIBRARY)" "$(CURRENT_CLIENT_LIBRARY)"; \
 	else \
 		echo "Directory $(CURRENT_CLIENT_LIBRARY) does not exist"; \
 	fi
@@ -111,7 +111,7 @@ endif
 clean:
 	rm -r -f build/
 	rm -r -f dist/
-	rm -r -f pantos_client_cli.egg-info/
-ifneq ($(shell docker images -q pantosio/pantos-client 2>/dev/null),)
-	docker rmi -f pantosio/pantos-client
+	rm -r -f vision_client_cli.egg-info/
+ifneq ($(shell docker images -q visionio/vision-client 2>/dev/null),)
+	docker rmi -f visionio/vision-client
 endif

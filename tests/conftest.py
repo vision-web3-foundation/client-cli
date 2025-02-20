@@ -1,12 +1,12 @@
-"""Shared fixtures for all pantos.cli package tests.
+"""Shared fixtures for all vision.cli package tests.
 
 """
 import uuid
 
 import hexbytes
 import pytest
-from pantos.client.library.api import TokenTransferStatus
-from pantos.common.entities import BlockchainAddress
+from vision.client.library.api import TokenTransferStatus
+from vision.common.entities import BlockchainAddress
 
 _SERVICE_NODE = BlockchainAddress('0x5188287E724140aa3C432dCfE69E00992aF09d09')
 

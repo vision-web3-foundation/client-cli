@@ -1,10 +1,10 @@
-"""Main Pantos Client CLI application module.
+"""Main Vision Client CLI application module.
 
 """
 import logging
 import sys
 
-from pantos.cli.configuration import load_config
+from vision.cli.configuration import load_config
 
 
 def initialize_application() -> None:

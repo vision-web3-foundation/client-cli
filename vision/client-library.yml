@@ -3,7 +3,7 @@ protocol:
     testnet: !ENV ${PROTOCOL_TESTNET:0.1.0}
 
 token_creator:
-    url: !ENV ${TOKEN_CREATOR_URL:https://creatorb.testnet.pantos.io}
+    url: !ENV ${TOKEN_CREATOR_URL:https://creatorb.testnet.vision.io}
 
 service_nodes:
     timeout: !ENV tag:yaml.org,2002:float ${SERVICE_NODES_TIMEOUT:5}
@@ -22,15 +22,15 @@ blockchains:
         forwarder: !ENV ${AVALANCHE_FORWARDER:0xfd7D081b7426aAb19CDc63E245313Ce9fF559cDC}
         tokens:
             best: !ENV ${AVALANCHE_TOKEN_BEST:0x5B1059888f0D2693459de34b4B2061A0DEff9d2F}
-            pan: !ENV ${AVALANCHE_TOKEN_PAN:0xC892F1D09a7BEF98d65e7f9bD4642d36BC506441}
-            panavax: !ENV ${AVALANCHE_TOKEN_PANAVAX:0x6A7ABeea69f01A225104Cc6AD44B88D15056a3fA}
-            panbnb: !ENV ${AVALANCHE_TOKEN_PANBNB:0x5538e600dc919f72858dd4D4F5E4327ec6f2af60}
-            pancelo: !ENV ${AVALANCHE_TOKEN_PANCELO:0x35846c1aA968ce9B643B88ff96DeE21164D0e44e}
-            pancro: !ENV ${AVALANCHE_TOKEN_PANCRO:0xE31c64069E6f3275E6bb60293A9a6e9a8F7A346f}
-            paneth: !ENV ${AVALANCHE_TOKEN_PANETH:0x5e447968d4a177fE7bFB8877cA12aE20Bd60dD85}
-            panpol: !ENV ${AVALANCHE_TOKEN_PANPOL}
-            pans: !ENV ${AVALANCHE_TOKEN_PANS}
-            pansol: !ENV ${AVALANCHE_TOKEN_PANSOL}
+            vsn: !ENV ${AVALANCHE_TOKEN_VSN:0xC892F1D09a7BEF98d65e7f9bD4642d36BC506441}
+            vsnavax: !ENV ${AVALANCHE_TOKEN_VSNAVAX:0x6A7ABeea69f01A225104Cc6AD44B88D15056a3fA}
+            vsnbnb: !ENV ${AVALANCHE_TOKEN_VSNBNB:0x5538e600dc919f72858dd4D4F5E4327ec6f2af60}
+            vsncelo: !ENV ${AVALANCHE_TOKEN_VSNCELO:0x35846c1aA968ce9B643B88ff96DeE21164D0e44e}
+            vsncro: !ENV ${AVALANCHE_TOKEN_VSNCRO:0xE31c64069E6f3275E6bb60293A9a6e9a8F7A346f}
+            vsneth: !ENV ${AVALANCHE_TOKEN_VSNETH:0x5e447968d4a177fE7bFB8877cA12aE20Bd60dD85}
+            vsnpol: !ENV ${AVALANCHE_TOKEN_VSNPOL}
+            vsns: !ENV ${AVALANCHE_TOKEN_VSNS}
+            vsnsol: !ENV ${AVALANCHE_TOKEN_VSNSOL}
     bnb_chain:
         active: !ENV tag:yaml.org,2002:bool ${BNB_CHAIN_ACTIVE:true}
         provider: !ENV ${BNB_CHAIN_PROVIDER:https://data-seed-prebsc-1-s1.binance.org:8545/}
@@ -44,15 +44,15 @@ blockchains:
         forwarder: !ENV ${BNB_CHAIN_FORWARDER:0x8d1A4C7bc5f327f30895150c4596E3db6Eb48562}
         tokens:
             best: !ENV ${BNB_CHAIN_TOKEN_BEST:0xA52D00fAad14B4643aE7011a7DDd02bDD9C6C99e}
-            pan: !ENV ${BNB_CHAIN_TOKEN_PAN:0xC892F1D09a7BEF98d65e7f9bD4642d36BC506441}
-            panavax: !ENV ${BNB_CHAIN_TOKEN_PANAVAX:0x6A7ABeea69f01A225104Cc6AD44B88D15056a3fA}
-            panbnb: !ENV ${BNB_CHAIN_TOKEN_PANBNB:0x5538e600dc919f72858dd4D4F5E4327ec6f2af60}
-            pancelo: !ENV ${BNB_CHAIN_TOKEN_PANCELO:0xa562C9Ef83dcfF9ee6bB90FcC7b0DbEFC8C0e8f4}
-            pancro: !ENV ${BNB_CHAIN_TOKEN_PANCRO:0xC92D9f4169fCD5FcA1A15A177b98f43F0Eb90e3f}
-            paneth: !ENV ${BNB_CHAIN_TOKEN_PANETH:0x5e447968d4a177fE7bFB8877cA12aE20Bd60dD85}
-            panpol: !ENV ${BNB_CHAIN_TOKEN_PANPOL}
-            pans: !ENV ${BNB_CHAIN_TOKEN_PANS}
-            pansol: !ENV ${BNB_CHAIN_TOKEN_PANSOL}
+            vsn: !ENV ${BNB_CHAIN_TOKEN_VSN:0xC892F1D09a7BEF98d65e7f9bD4642d36BC506441}
+            vsnavax: !ENV ${BNB_CHAIN_TOKEN_VSNAVAX:0x6A7ABeea69f01A225104Cc6AD44B88D15056a3fA}
+            vsnbnb: !ENV ${BNB_CHAIN_TOKEN_VSNBNB:0x5538e600dc919f72858dd4D4F5E4327ec6f2af60}
+            vsncelo: !ENV ${BNB_CHAIN_TOKEN_VSNCELO:0xa562C9Ef83dcfF9ee6bB90FcC7b0DbEFC8C0e8f4}
+            vsncro: !ENV ${BNB_CHAIN_TOKEN_VSNCRO:0xC92D9f4169fCD5FcA1A15A177b98f43F0Eb90e3f}
+            vsneth: !ENV ${BNB_CHAIN_TOKEN_VSNETH:0x5e447968d4a177fE7bFB8877cA12aE20Bd60dD85}
+            vsnpol: !ENV ${BNB_CHAIN_TOKEN_VSNPOL}
+            vsns: !ENV ${BNB_CHAIN_TOKEN_VSNS}
+            vsnsol: !ENV ${BNB_CHAIN_TOKEN_VSNSOL}
     celo:
         active: !ENV tag:yaml.org,2002:bool ${CELO_ACTIVE:true}
         provider: !ENV ${CELO_PROVIDER:https://alfajores-forno.celo-testnet.org}
@@ -66,15 +66,15 @@ blockchains:
         forwarder: !ENV ${CELO_FORWARDER:0x38dd7589fF20370b3BA5d9C09ac1d16Ed3496435}
         tokens:
             best: !ENV ${CELO_TOKEN_BEST:0x5e447968d4a177fE7bFB8877cA12aE20Bd60dD85}
-            pan: !ENV ${CELO_TOKEN_PAN:0x5538e600dc919f72858dd4D4F5E4327ec6f2af60}
-            panavax: !ENV ${CELO_TOKEN_PANAVAX:0xFd9a7A3fDA872eA8E948b3b41f2dcb6CB40ed277}
-            panbnb: !ENV ${CELO_TOKEN_PANBNB:0x7EFfCc0a130E452c2FB78bFEDBd02a33E03FD50d}
-            pancelo: !ENV ${CELO_TOKEN_PANCELO:0x9b304A0B21C6B830298b2412e51Bc5Ba17e8b796}
-            pancro: !ENV ${CELO_TOKEN_PANCRO:0xCD6dF7dBba253d2e14cb7DD8E1b2662CDb40C69F}
-            paneth: !ENV ${CELO_TOKEN_PANETH:0x997DFc659ABBd30F3514Bde874E663bC82B0e701}
-            panpol: !ENV ${CELO_TOKEN_PANPOL}
-            pans: !ENV ${CELO_TOKEN_PANS}
-            pansol: !ENV ${CELO_TOKEN_PANSOL}
+            vsn: !ENV ${CELO_TOKEN_VSN:0x5538e600dc919f72858dd4D4F5E4327ec6f2af60}
+            vsnavax: !ENV ${CELO_TOKEN_VSNAVAX:0xFd9a7A3fDA872eA8E948b3b41f2dcb6CB40ed277}
+            vsnbnb: !ENV ${CELO_TOKEN_VSNBNB:0x7EFfCc0a130E452c2FB78bFEDBd02a33E03FD50d}
+            vsncelo: !ENV ${CELO_TOKEN_VSNCELO:0x9b304A0B21C6B830298b2412e51Bc5Ba17e8b796}
+            vsncro: !ENV ${CELO_TOKEN_VSNCRO:0xCD6dF7dBba253d2e14cb7DD8E1b2662CDb40C69F}
+            vsneth: !ENV ${CELO_TOKEN_VSNETH:0x997DFc659ABBd30F3514Bde874E663bC82B0e701}
+            vsnpol: !ENV ${CELO_TOKEN_VSNPOL}
+            vsns: !ENV ${CELO_TOKEN_VSNS}
+            vsnsol: !ENV ${CELO_TOKEN_VSNSOL}
     cronos:
         active: !ENV tag:yaml.org,2002:bool ${CRONOS_ACTIVE:true}
         provider: !ENV ${CRONOS_PROVIDER:https://evm-t3.cronos.org}
@@ -88,15 +88,15 @@ blockchains:
         forwarder: !ENV ${CRONOS_FORWARDER:0x38dd7589fF20370b3BA5d9C09ac1d16Ed3496435}
         tokens:
             best: !ENV ${CRONOS_TOKEN_BEST:0x5e447968d4a177fE7bFB8877cA12aE20Bd60dD85}
-            pan: !ENV ${CRONOS_TOKEN_PAN:0x5538e600dc919f72858dd4D4F5E4327ec6f2af60}
-            panavax: !ENV ${CRONOS_TOKEN_PANAVAX:0xFd9a7A3fDA872eA8E948b3b41f2dcb6CB40ed277}
-            panbnb: !ENV ${CRONOS_TOKEN_PANBNB:0x7EFfCc0a130E452c2FB78bFEDBd02a33E03FD50d}
-            pancelo: !ENV ${CRONOS_TOKEN_PANCELO:0x9b304A0B21C6B830298b2412e51Bc5Ba17e8b796}
-            pancro: !ENV ${CRONOS_TOKEN_PANCRO:0xCD6dF7dBba253d2e14cb7DD8E1b2662CDb40C69F}
-            paneth: !ENV ${CRONOS_TOKEN_PANETH:0x997DFc659ABBd30F3514Bde874E663bC82B0e701}
-            panpol: !ENV ${CRONOS_TOKEN_PANPOL}
-            pans: !ENV ${CRONOS_TOKEN_PANS}
-            pansol: !ENV ${CRONOS_TOKEN_PANSOL}
+            vsn: !ENV ${CRONOS_TOKEN_VSN:0x5538e600dc919f72858dd4D4F5E4327ec6f2af60}
+            vsnavax: !ENV ${CRONOS_TOKEN_VSNAVAX:0xFd9a7A3fDA872eA8E948b3b41f2dcb6CB40ed277}
+            vsnbnb: !ENV ${CRONOS_TOKEN_VSNBNB:0x7EFfCc0a130E452c2FB78bFEDBd02a33E03FD50d}
+            vsncelo: !ENV ${CRONOS_TOKEN_VSNCELO:0x9b304A0B21C6B830298b2412e51Bc5Ba17e8b796}
+            vsncro: !ENV ${CRONOS_TOKEN_VSNCRO:0xCD6dF7dBba253d2e14cb7DD8E1b2662CDb40C69F}
+            vsneth: !ENV ${CRONOS_TOKEN_VSNETH:0x997DFc659ABBd30F3514Bde874E663bC82B0e701}
+            vsnpol: !ENV ${CRONOS_TOKEN_VSNPOL}
+            vsns: !ENV ${CRONOS_TOKEN_VSNS}
+            vsnsol: !ENV ${CRONOS_TOKEN_VSNSOL}
     ethereum:
         active: !ENV tag:yaml.org,2002:bool ${ETHEREUM_ACTIVE:true}
         provider: !ENV ${ETHEREUM_PROVIDER:https://ethereum-holesky.publicnode.com}
@@ -110,15 +110,15 @@ blockchains:
         forwarder: !ENV ${ETHEREUM_FORWARDER:0xce5FE7168424ED2246a3dd79214f2D69a7Edc0BB}
         tokens:
             best: !ENV ${ETHEREUM_TOKEN_BEST:0x9b304A0B21C6B830298b2412e51Bc5Ba17e8b796}
-            pan: !ENV ${ETHEREUM_TOKEN_PAN:0x7EFfCc0a130E452c2FB78bFEDBd02a33E03FD50d}
-            panavax: !ENV ${ETHEREUM_TOKEN_PANAVAX:0xCD6dF7dBba253d2e14cb7DD8E1b2662CDb40C69F}
-            panbnb: !ENV ${ETHEREUM_TOKEN_PANBNB:0x997DFc659ABBd30F3514Bde874E663bC82B0e701}
-            pancelo: !ENV ${ETHEREUM_TOKEN_PANCELO:0xEAe1274dBdD006b5eA3197729BF5f11B8fbb427E}
-            pancro: !ENV ${ETHEREUM_TOKEN_PANCRO:0x30ce06f12960C46aC64542813e45E03164f412fD}
-            paneth: !ENV ${ETHEREUM_TOKEN_PANETH:0x3eaFCb56D94FE1a029F727f652323062908D3185}
-            panpol: !ENV ${ETHEREUM_TOKEN_PANPOL}
-            pans: !ENV ${ETHEREUM_TOKEN_PANS}
-            pansol: !ENV ${ETHEREUM_TOKEN_PANSOL}
+            vsn: !ENV ${ETHEREUM_TOKEN_VSN:0x7EFfCc0a130E452c2FB78bFEDBd02a33E03FD50d}
+            vsnavax: !ENV ${ETHEREUM_TOKEN_VSNAVAX:0xCD6dF7dBba253d2e14cb7DD8E1b2662CDb40C69F}
+            vsnbnb: !ENV ${ETHEREUM_TOKEN_VSNBNB:0x997DFc659ABBd30F3514Bde874E663bC82B0e701}
+            vsncelo: !ENV ${ETHEREUM_TOKEN_VSNCELO:0xEAe1274dBdD006b5eA3197729BF5f11B8fbb427E}
+            vsncro: !ENV ${ETHEREUM_TOKEN_VSNCRO:0x30ce06f12960C46aC64542813e45E03164f412fD}
+            vsneth: !ENV ${ETHEREUM_TOKEN_VSNETH:0x3eaFCb56D94FE1a029F727f652323062908D3185}
+            vsnpol: !ENV ${ETHEREUM_TOKEN_VSNPOL}
+            vsns: !ENV ${ETHEREUM_TOKEN_VSNS}
+            vsnsol: !ENV ${ETHEREUM_TOKEN_VSNSOL}
     polygon:
         active: !ENV tag:yaml.org,2002:bool ${POLYGON_ACTIVE:true}
         provider: !ENV ${POLYGON_PROVIDER:https://rpc.ankr.com/polygon_amoy}
@@ -132,15 +132,15 @@ blockchains:
         forwarder: !ENV ${POLYGON_FORWARDER}
         tokens:
             best: !ENV ${POLYGON_TOKEN_BEST}
-            pan: !ENV ${POLYGON_TOKEN_PAN}
-            panavax: !ENV ${POLYGON_TOKEN_PANAVAX}
-            panbnb: !ENV ${POLYGON_TOKEN_PANBNB}
-            pancelo: !ENV ${POLYGON_TOKEN_PANCELO}
-            pancro: !ENV ${POLYGON_TOKEN_PANCRO}
-            paneth: !ENV ${POLYGON_TOKEN_PANETH}
-            panpol: !ENV ${POLYGON_TOKEN_PANPOL}
-            pans: !ENV ${POLYGON_TOKEN_PANS}
-            pansol: !ENV ${POLYGON_TOKEN_PANSOL}
+            vsn: !ENV ${POLYGON_TOKEN_VSN}
+            vsnavax: !ENV ${POLYGON_TOKEN_VSNAVAX}
+            vsnbnb: !ENV ${POLYGON_TOKEN_VSNBNB}
+            vsncelo: !ENV ${POLYGON_TOKEN_VSNCELO}
+            vsncro: !ENV ${POLYGON_TOKEN_VSNCRO}
+            vsneth: !ENV ${POLYGON_TOKEN_VSNETH}
+            vsnpol: !ENV ${POLYGON_TOKEN_VSNPOL}
+            vsns: !ENV ${POLYGON_TOKEN_VSNS}
+            vsnsol: !ENV ${POLYGON_TOKEN_VSNSOL}
     solana:
         active: !ENV tag:yaml.org,2002:bool ${SOLANA_ACTIVE:false}
         provider: !ENV ${SOLANA_PROVIDER}
@@ -154,15 +154,15 @@ blockchains:
         forwarder: !ENV ${SOLANA_FORWARDER}
         tokens:
             best: !ENV ${SOLANA_TOKEN_BEST}
-            pan: !ENV ${SOLANA_TOKEN_PAN}
-            panavax: !ENV ${SOLANA_TOKEN_PANAVAX}
-            panbnb: !ENV ${SOLANA_TOKEN_PANBNB}
-            pancelo: !ENV ${SOLANA_TOKEN_PANCELO}
-            pancro: !ENV ${SOLANA_TOKEN_PANCRO}
-            paneth: !ENV ${SOLANA_TOKEN_PANETH}
-            panpol: !ENV ${SOLANA_TOKEN_PANPOL}
-            pans: !ENV ${SOLANA_TOKEN_PANS}
-            pansol: !ENV ${SOLANA_TOKEN_PANSOL}
+            vsn: !ENV ${SOLANA_TOKEN_VSN}
+            vsnavax: !ENV ${SOLANA_TOKEN_VSNAVAX}
+            vsnbnb: !ENV ${SOLANA_TOKEN_VSNBNB}
+            vsncelo: !ENV ${SOLANA_TOKEN_VSNCELO}
+            vsncro: !ENV ${SOLANA_TOKEN_VSNCRO}
+            vsneth: !ENV ${SOLANA_TOKEN_VSNETH}
+            vsnpol: !ENV ${SOLANA_TOKEN_VSNPOL}
+            vsns: !ENV ${SOLANA_TOKEN_VSNS}
+            vsnsol: !ENV ${SOLANA_TOKEN_VSNSOL}
     sonic:
         active: !ENV tag:yaml.org,2002:bool ${SONIC_ACTIVE:true}
         provider: !ENV ${SONIC_PROVIDER:https://rpc.testnet.soniclabs.com/}
@@ -176,12 +176,12 @@ blockchains:
         forwarder: !ENV ${SONIC_FORWARDER}
         tokens:
             best: !ENV ${SONIC_TOKEN_BEST}
-            pan: !ENV ${SONIC_TOKEN_PAN}
-            panavax: !ENV ${SONIC_TOKEN_PANAVAX}
-            panbnb: !ENV ${SONIC_TOKEN_PANBNB}
-            pancelo: !ENV ${SONIC_TOKEN_PANCELO}
-            pancro: !ENV ${SONIC_TOKEN_PANCRO}
-            paneth: !ENV ${SONIC_TOKEN_PANETH}
-            panpol: !ENV ${SONIC_TOKEN_PANPOL}
-            pans: !ENV ${SONIC_TOKEN_PANS}
-            pansol: !ENV ${SONIC_TOKEN_PANSOL}
+            vsn: !ENV ${SONIC_TOKEN_VSN}
+            vsnavax: !ENV ${SONIC_TOKEN_VSNAVAX}
+            vsnbnb: !ENV ${SONIC_TOKEN_VSNBNB}
+            vsncelo: !ENV ${SONIC_TOKEN_VSNCELO}
+            vsncro: !ENV ${SONIC_TOKEN_VSNCRO}
+            vsneth: !ENV ${SONIC_TOKEN_VSNETH}
+            vsnpol: !ENV ${SONIC_TOKEN_VSNPOL}
+            vsns: !ENV ${SONIC_TOKEN_VSNS}
+            vsnsol: !ENV ${SONIC_TOKEN_VSNSOL}
