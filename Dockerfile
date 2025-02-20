@@ -6,7 +6,7 @@ RUN apk update && apk add gcc libc-dev libffi-dev \
 
 RUN python3 -m pip install 'poetry<2.0.0'
 
-WORKDIR /pantos-cli
+WORKDIR /vision-cli
 
 COPY . .
 
@@ -14,9 +14,9 @@ RUN poetry build
 
 FROM python:3.12-alpine AS production
 
-WORKDIR /pantos-cli
+WORKDIR /vision-cli
 
-COPY --from=build /pantos-cli/dist/*.whl .
+COPY --from=build /vision-cli/dist/*.whl .
 
 RUN python3 -m pip install *.whl
 
@@ -24,4 +24,4 @@ RUN pip cache purge && rm -rf ~/.cache/pip
 
 RUN rm *.whl
 
-ENTRYPOINT ["pantos-cli"]
+ENTRYPOINT ["vision-cli"]

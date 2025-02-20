@@ -5,8 +5,8 @@ configuration.
 import itertools
 import typing
 
-from pantos.common.blockchains.base import Blockchain
-from pantos.common.configuration import Config
+from vision.common.blockchains.base import Blockchain
+from vision.common.configuration import Config
 
 _DEFAULT_FILE_NAME: typing.Final[str] = 'client-cli.yml'
 """Default configuration file name."""
@@ -91,7 +91,7 @@ def load_config(file_path: typing.Optional[str] = None,
 
     Raises
     ------
-    pantos.common.configuration.ConfigError
+    vision.common.configuration.ConfigError
         If the configuration cannot be loaded (e.g. due to an invalid
         configuration file).
 

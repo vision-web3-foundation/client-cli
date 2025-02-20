@@ -1,19 +1,19 @@
-<img src="https://raw.githubusercontent.com/pantos-io/client-cli/img/pantos-logo-full.svg" alt="Pantos logo" align="right" width="120" />
+<img src="https://raw.githubusercontent.com/vision-io/client-cli/img/vision-logo-full.svg" alt="Vision logo" align="right" width="120" />
 
-[![CI](https://github.com/pantos-io/client-cli/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/pantos-io/client-cli/actions/workflows/ci.yaml) 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pantos-io_client-cli2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pantos-io_client-cli2)
+[![CI](https://github.com/vision-io/client-cli/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/vision-io/client-cli/actions/workflows/ci.yaml) 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vision-io_client-cli2&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vision-io_client-cli2)
 
-# Pantos Client CLI
+# Vision Client CLI
 
 ## 1. Introduction
 
 ### 1.1 Overview
 
-Welcome to the documentation for Pantos Client CLI, a powerful tool for engaging with the Pantos system. This documentation aims to provide developers with comprehensive information on how to use the features the CLI offers.
+Welcome to the documentation for Vision Client CLI, a powerful tool for engaging with the Vision system. This documentation aims to provide developers with comprehensive information on how to use the features the CLI offers.
 
 ### 1.2 Features
 
-The Pantos Client CLI offers the following functionalities:
+The Vision Client CLI offers the following functionalities:
 
 1. Retrieve the balance of a token
 2. Retrieve the service node bids
@@ -29,17 +29,17 @@ Please make sure that your environment meets the following requirements:
 
 The CLI requires a private key encrypted with a password.
 
-Since, for the moment, the Pantos protocol supports only EVM blockchains, only an Ethereum account keystore file is sufficient. It can be created with tools such as https://vanity-eth.tk/.
+Since, for the moment, the Vision protocol supports only EVM blockchains, only an Ethereum account keystore file is sufficient. It can be created with tools such as https://vanity-eth.tk/.
 
-One of the most significant advantages of using Pantos is that the protocol has been designed to require minimal user friction when cross-chain operations are performed. Therefore, when using the Pantos products, you must top up your wallet only with PAN tokens.
+One of the most significant advantages of using Vision is that the protocol has been designed to require minimal user friction when cross-chain operations are performed. Therefore, when using the Vision products, you must top up your wallet only with VSN tokens.
 
 #### Python Version
 
-The Pantos Client CLI supports **Python 3.10** or higher. Ensure that you have the correct Python version installed before the installation steps. You can download the latest version of Python from the official [Python website](https://www.python.org/downloads/).
+The Vision Client CLI supports **Python 3.10** or higher. Ensure that you have the correct Python version installed before the installation steps. You can download the latest version of Python from the official [Python website](https://www.python.org/downloads/).
 
 #### Library Versions
 
-The Pantos Client CLI has been tested with the library versions specified in **poetry.lock**.
+The Vision Client CLI has been tested with the library versions specified in **poetry.lock**.
 
 #### Poetry
 
@@ -63,7 +63,7 @@ poetry config virtualenvs.in-project true
 Clone the repository to your local machine:
 
 ```bash
-$ git clone https://github.com/pantos-io/client-cli.git
+$ git clone https://github.com/vision-io/client-cli.git
 $ cd client-cli
 $ virtualenv env
 $ source env/bin/activate
@@ -84,17 +84,17 @@ $ poetry install --no-root
 
 The CLI comes with two configurations.
 
-1. A configuration for the Pantos Client Library can be found in **client-library.yml**.
+1. A configuration for the Vision Client Library can be found in **client-library.yml**.
 The library already has a set configuration for our testnet environment, but feel free to adapt it to your needs.
 
-2. A configuration for the Pantos Client CLI can be found in **client-cli.yml**. Make sure to replace the keystore file path and the password with your private keystore.
+2. A configuration for the Vision Client CLI can be found in **client-cli.yml**. Make sure to replace the keystore file path and the password with your private keystore.
 
 ### 3.2 Examples
 
-The Pantos Client CLI can be used by executing the **pantos-client.sh** bash script.
+The Vision Client CLI can be used by executing the **vision-client.sh** bash script.
 
 ```bash
-$ pantos-client [-h] {balance,bids,transfer} ...
+$ vision-client [-h] {balance,bids,transfer} ...
 
 positional arguments:
   {balance,bids,transfer}

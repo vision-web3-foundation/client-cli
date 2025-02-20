@@ -6,18 +6,18 @@ import unittest
 import unittest.mock
 
 import pytest
-from pantos.client.library import api
-from pantos.client.library.api import DestinationTransferStatus
-from pantos.client.library.api import ServiceNodeTaskInfo
-from pantos.client.library.constants import TOKEN_SYMBOL_PAN
-from pantos.common.blockchains.enums import Blockchain
-from pantos.common.entities import ServiceNodeTransferStatus
-from pantos.common.types import BlockchainAddress
+from vision.client.library import api
+from vision.client.library.api import DestinationTransferStatus
+from vision.client.library.api import ServiceNodeTaskInfo
+from vision.client.library.constants import TOKEN_SYMBOL_VSN
+from vision.common.blockchains.enums import Blockchain
+from vision.common.entities import ServiceNodeTransferStatus
+from vision.common.types import BlockchainAddress
 
-from pantos.cli.__main__ import _load_private_key
-from pantos.cli.__main__ import _string_int_pair
-from pantos.cli.__main__ import main
-from pantos.cli.exceptions import ClientCliError
+from vision.cli.__main__ import _load_private_key
+from vision.cli.__main__ import _string_int_pair
+from vision.cli.__main__ import main
+from vision.cli.exceptions import ClientCliError
 
 TEST_KEYSTORE = pathlib.Path(__file__).parent.absolute() / 'test.keystore'
 MOCK_CLI_BLOCKCHAIN_COMMON_CONFIG = {
@@ -94,23 +94,23 @@ MOCK_LIB_CONFIG_DICT = {
 }
 
 
-@unittest.mock.patch('pantos.cli.__main__._load_private_key',
+@unittest.mock.patch('vision.cli.__main__._load_private_key',
                      return_value='key')
-@unittest.mock.patch('pantos.cli.__main__.config')
-@unittest.mock.patch('pantos.client.library.api.retrieve_token_balance')
+@unittest.mock.patch('vision.cli.__main__.config')
+@unittest.mock.patch('vision.client.library.api.retrieve_token_balance')
 def test_balance(mock_retrieve_token_balance, mock_cli_config, mock_lib_config,
                  capsys):
     mock_retrieve_token_balance.return_value = decimal.Decimal('0.4')
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
 
-    cmd = f'pantos.cli balance -k {TEST_KEYSTORE} bnb_chain pan'
-    expected = 'Your PAN token balance on BNB_CHAIN:\n0.4\n'
+    cmd = f'vision.cli balance -k {TEST_KEYSTORE} bnb_chain vsn'
+    expected = 'Your VSN token balance on BNB_CHAIN:\n0.4\n'
 
     with unittest.mock.patch('sys.argv', cmd.split(' ')):
         main()
 
     mock_retrieve_token_balance.assert_called_once_with(
-        Blockchain.BNB_CHAIN, unittest.mock.ANY, TOKEN_SYMBOL_PAN)
+        Blockchain.BNB_CHAIN, unittest.mock.ANY, TOKEN_SYMBOL_VSN)
 
     captured = capsys.readouterr()
     assert captured.out == expected
@@ -118,14 +118,14 @@ def test_balance(mock_retrieve_token_balance, mock_cli_config, mock_lib_config,
 
 @unittest.mock.patch('shutil.copy')
 @unittest.mock.patch('pathlib.Path.mkdir')
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
 def test_config_create(mock_cli_config, mock_lib_config, mock_mkdir,
                        mock_shutil_copy: unittest.mock.MagicMock, capsys):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
     mock_lib_config.__getitem__.side_effect = MOCK_LIB_CONFIG_DICT.__getitem__
 
-    cmd = 'pantos.cli create-config'
+    cmd = 'vision.cli create-config'
 
     with unittest.mock.patch('sys.argv', cmd.split(' ')):
         main()
@@ -145,15 +145,15 @@ def test_config_create(mock_cli_config, mock_lib_config, mock_mkdir,
 
 @unittest.mock.patch('shutil.copy')
 @unittest.mock.patch('pathlib.Path.mkdir')
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
 def test_config_create_custom_dir(mock_cli_config, mock_lib_config, mock_mkdir,
                                   mock_shutil_copy: unittest.mock.MagicMock,
                                   capsys):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
     mock_lib_config.__getitem__.side_effect = MOCK_LIB_CONFIG_DICT.__getitem__
 
-    cmd = 'pantos.cli create-config -p /foo'
+    cmd = 'vision.cli create-config -p /foo'
 
     with unittest.mock.patch('sys.argv', cmd.split(' ')):
         main()
@@ -171,40 +171,40 @@ def test_config_create_custom_dir(mock_cli_config, mock_lib_config, mock_mkdir,
     assert captured.out == 'Created .env files in /foo\n'
 
 
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
 def test_not_implemented(mock_cli_config, mock_lib_config, capsys):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
     mock_lib_config.__getitem__.side_effect = MOCK_LIB_CONFIG_DICT.__getitem__
 
-    cmd = 'pantos.cli status'
+    cmd = 'vision.cli status'
     with unittest.mock.patch('sys.argv',
                              cmd.split(' ')), pytest.raises(SystemExit):
         main()
 
 
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
 def test_no_arguments(mock_cli_config, mock_lib_config, capsys):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
     mock_lib_config.__getitem__.side_effect = MOCK_LIB_CONFIG_DICT.__getitem__
 
-    cmd = 'pantos.cli'
+    cmd = 'vision.cli'
     with unittest.mock.patch('sys.argv',
                              cmd.split(' ')), pytest.raises(SystemExit):
         main()
 
 
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
-@unittest.mock.patch('pantos.client.library.api.retrieve_token_balance')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.api.retrieve_token_balance')
 def test_balance_blockchain_not_active(mock_retrieve_token_balance,
                                        mock_cli_config, mock_lib_config):
     mock_retrieve_token_balance.return_value = decimal.Decimal('0.4')
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
     mock_lib_config.__getitem__.side_effect = MOCK_LIB_CONFIG_DICT.__getitem__
 
-    cmd = f'pantos.cli balance -k {TEST_KEYSTORE} sonic pan'
+    cmd = f'vision.cli balance -k {TEST_KEYSTORE} sonic vsn'
 
     with unittest.mock.patch('sys.argv',
                              cmd.split(' ')), pytest.raises(SystemExit):
@@ -213,9 +213,9 @@ def test_balance_blockchain_not_active(mock_retrieve_token_balance,
     assert not mock_retrieve_token_balance.called
 
 
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
-@unittest.mock.patch('pantos.client.library.api.retrieve_service_node_bids')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.api.retrieve_service_node_bids')
 def test_bids(mock_retrieve_service_node_bids, mock_cli_config,
               mock_lib_config, capsys):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
@@ -236,13 +236,13 @@ def test_bids(mock_retrieve_service_node_bids, mock_cli_config,
 
     mock_retrieve_service_node_bids.return_value = bids
 
-    cmd = 'pantos.cli bids bnb_chain ethereum'
+    cmd = 'vision.cli bids bnb_chain ethereum'
     expected = (
-        'Pantos service node bids for token transfers from the\n'
+        'Vision service node bids for token transfers from the\n'
         'source blockchain BNB_CHAIN to the destination blockchain ETHEREUM:\n'
         '\n'
         'Service node\t\t\t\t\tTime\tFee\n'
-        '\t\t\t\t\t\t(s)\t(PAN)\n'
+        '\t\t\t\t\t\t(s)\t(VSN)\n'
         '===================================================================='
         '=\n0x9C20a03E230e9733561E4bab598409bB6d5AED12\t600\t2\n'
         '0x9C20a03E230e9733561E4bab598409bB6d5AED12\t1200\t1.5\n')
@@ -257,9 +257,9 @@ def test_bids(mock_retrieve_service_node_bids, mock_cli_config,
     assert captured.out == expected
 
 
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
-@unittest.mock.patch('pantos.client.library.api.retrieve_service_node_bids')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.api.retrieve_service_node_bids')
 def test_bids_no_bids_available(mock_retrieve_service_node_bids,
                                 mock_cli_config, mock_lib_config, capsys):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
@@ -267,13 +267,13 @@ def test_bids_no_bids_available(mock_retrieve_service_node_bids,
     bids = {'0x9C20a03E230e9733561E4bab598409bB6d5AED12': []}
     mock_retrieve_service_node_bids.return_value = bids
 
-    cmd = 'pantos.cli bids bnb_chain ethereum'
+    cmd = 'vision.cli bids bnb_chain ethereum'
     expected = (
-        'Pantos service node bids for token transfers from the\n'
+        'Vision service node bids for token transfers from the\n'
         'source blockchain BNB_CHAIN to the destination blockchain ETHEREUM:\n'
         '\n'
         'Service node\t\t\t\t\tTime\tFee\n'
-        '\t\t\t\t\t\t(s)\t(PAN)\n'
+        '\t\t\t\t\t\t(s)\t(VSN)\n'
         '===================================================================='
         '=\n')
 
@@ -287,18 +287,18 @@ def test_bids_no_bids_available(mock_retrieve_service_node_bids,
     assert captured.out == expected
 
 
-@unittest.mock.patch('pantos.cli.__main__._load_private_key',
+@unittest.mock.patch('vision.cli.__main__._load_private_key',
                      return_value='key')
-@unittest.mock.patch('pantos.cli.__main__.config')
-@unittest.mock.patch('pantos.client.library.api.transfer_tokens')
+@unittest.mock.patch('vision.cli.__main__.config')
+@unittest.mock.patch('vision.client.library.api.transfer_tokens')
 def test_transfer(mock_transfer_tokens, mock_cli_config, mock_lib_config,
                   service_node, task_uuid, capsys):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
     mock_transfer_tokens.return_value = ServiceNodeTaskInfo(
         task_uuid, service_node)
 
-    cmd = (f'pantos.cli transfer -k {TEST_KEYSTORE} ethereum bnb_chain '
-           '0x2003c848eB0201AA261892081fBC9E4FC559c494 pan .6 --yes')
+    cmd = (f'vision.cli transfer -k {TEST_KEYSTORE} ethereum bnb_chain '
+           '0x2003c848eB0201AA261892081fBC9E4FC559c494 vsn .6 --yes')
     expected = (f'\nThe service node {service_node}\naccepted the transfer'
                 f' request and returned\nthe following task ID: {task_uuid}\n')
 
@@ -308,21 +308,21 @@ def test_transfer(mock_transfer_tokens, mock_cli_config, mock_lib_config,
     mock_transfer_tokens.assert_called_once_with(
         Blockchain.ETHEREUM, Blockchain.BNB_CHAIN, unittest.mock.ANY,
         BlockchainAddress('0x2003c848eB0201AA261892081fBC9E4FC559c494'),
-        TOKEN_SYMBOL_PAN, decimal.Decimal('.6'), None)
+        TOKEN_SYMBOL_VSN, decimal.Decimal('.6'), None)
 
     captured = capsys.readouterr()
     assert captured.out == expected
 
 
-@unittest.mock.patch('pantos.cli.__main__.get_blockchain_config')
+@unittest.mock.patch('vision.cli.__main__.get_blockchain_config')
 def test_load_private_key_no_private_key_no_config(mock_get_blockchain_config):
     mock_get_blockchain_config.return_value = {'ETHEREUM': None}
     with pytest.raises(ClientCliError):
         _load_private_key(api.Blockchain.ETHEREUM)
 
 
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
 def test_load_private_key_no_private_key(mock_cli_config, mock_lib_config):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
     mock_lib_config.__getitem__.side_effect = MOCK_LIB_CONFIG_DICT.__getitem__
@@ -330,8 +330,8 @@ def test_load_private_key_no_private_key(mock_cli_config, mock_lib_config):
         _load_private_key(api.Blockchain.ETHEREUM)
 
 
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
 def test_load_private_key_no_keystore_file(mock_cli_config, mock_lib_config):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
     mock_lib_config.__getitem__.side_effect = MOCK_LIB_CONFIG_DICT.__getitem__
@@ -345,14 +345,14 @@ def test_string_int_pair_correct():
     assert _string_int_pair(argument) == argument
 
 
-@unittest.mock.patch('pantos.cli.__main__._string_int_pair_first', False)
+@unittest.mock.patch('vision.cli.__main__._string_int_pair_first', False)
 def test_string_int_pair_value_error():
     argument = 'key=value'
     with pytest.raises(argparse.ArgumentTypeError):
         _string_int_pair(argument)
 
 
-@unittest.mock.patch('pantos.cli.__main__._string_int_pair_first', False)
+@unittest.mock.patch('vision.cli.__main__._string_int_pair_first', False)
 def test_string_int_pair_correct_cast():
     argument = '1'
     assert _string_int_pair(argument) == int(argument)
@@ -362,16 +362,16 @@ def test_string_int_pair_correct_cast():
     list(tuple_) for tuple_ in itertools.product(
         Blockchain, ServiceNodeTransferStatus, DestinationTransferStatus)
 ], indirect=True)
-@unittest.mock.patch('pantos.client.library.configuration.config')
-@unittest.mock.patch('pantos.cli.configuration.config')
-@unittest.mock.patch('pantos.client.library.api.get_token_transfer_status')
+@unittest.mock.patch('vision.client.library.configuration.config')
+@unittest.mock.patch('vision.cli.configuration.config')
+@unittest.mock.patch('vision.client.library.api.get_token_transfer_status')
 def test_print_status(mock_get_token_transfer_status, mock_cli_config,
                       mock_lib_config, token_transfer_status, service_node,
                       task_uuid, capsys):
     mock_cli_config.__getitem__.side_effect = MOCK_CLI_CONFIG_DICT.__getitem__
     mock_lib_config.__getitem__.side_effect = MOCK_LIB_CONFIG_DICT.__getitem__
 
-    cmd = f'pantos.cli status ethereum {service_node} {task_uuid}'
+    cmd = f'vision.cli status ethereum {service_node} {task_uuid}'
     mock_get_token_transfer_status.return_value = token_transfer_status
 
     with unittest.mock.patch('sys.argv', cmd.split(' ')):

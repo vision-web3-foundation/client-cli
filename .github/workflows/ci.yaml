@@ -8,7 +8,7 @@ on:
 
 jobs:
   shared:
-    uses: pantos-io/ci-workflows/.github/workflows/python-ci.yml@v1
+    uses: vision-web3-foundation/ci-workflows/.github/workflows/python-ci.yml@v1
     secrets: inherit
 
   docker-build:
@@ -36,12 +36,12 @@ jobs:
             --build-arg environment=testnet \
             --builder ${{ steps.buildx.outputs.name }} \
             --load \
-            --tag ghcr.io/pantos-io/client-cli:latest \
+            --tag ghcr.io/vision-web3-foundation/client-cli:latest \
             .
 
       - name: Test image
         run: |
-          docker run --rm ghcr.io/pantos-io/client-cli:latest --help
+          docker run --rm ghcr.io/vision-web3-foundation/client-cli:latest --help
 
   build-and-run:
     runs-on: ubuntu-latest
@@ -54,9 +54,9 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Install dependencies
-        uses: pantos-io/ci-workflows/.github/actions/install-python-deps@v1
+        uses: vision-web3-foundation/ci-workflows/.github/actions/install-python-deps@v1
 
       - name: Run program
         run: |
           source .venv/bin/activate
-          ./pantos-client.sh --help
+          ./vision-client.sh --help

@@ -1,4 +1,4 @@
-"""Entry point for running the Pantos Client CLI.
+"""Entry point for running the Vision Client CLI.
 
 """
 import argparse
@@ -11,13 +11,13 @@ import sys
 import typing
 import uuid
 
-from pantos.client.library import api
-from pantos.common.servicenodes import ServiceNodeTransferStatus
+from vision.client.library import api
+from vision.common.servicenodes import ServiceNodeTransferStatus
 
-from pantos.cli.application import initialize_application
-from pantos.cli.configuration import config
-from pantos.cli.configuration import get_blockchain_config
-from pantos.cli.exceptions import ClientCliError
+from vision.cli.application import initialize_application
+from vision.cli.configuration import config
+from vision.cli.configuration import get_blockchain_config
+from vision.cli.exceptions import ClientCliError
 
 
 def main() -> None:
@@ -54,8 +54,8 @@ def _create_argument_parser() -> argparse.ArgumentParser:
         sys.argv.append('--help')
     # Set up the argument parser
     parser = argparse.ArgumentParser(
-        prog='pantos-client',
-        description='Client for interacting with the Pantos multi-blockchain '
+        prog='vision-client',
+        description='Client for interacting with the Vision multi-blockchain '
         'token system.')
     subparsers = parser.add_subparsers(dest='command')
     # Argument parser for showing an account balance
@@ -66,7 +66,7 @@ def _create_argument_parser() -> argparse.ArgumentParser:
         help='blockchain where your account is located')
     parser_balance.add_argument(
         'token', type=api.TokenSymbol,
-        help='symbol of the Pantos-supported token to show the balance for')
+        help='symbol of the Vision-supported token to show the balance for')
     parser_balance.add_argument(
         '-k', '--keystore', type=pathlib.Path,
         help='path to a keystore file with your encrypted private key '
@@ -97,7 +97,7 @@ def _create_argument_parser() -> argparse.ArgumentParser:
         help='address of the recipient on the destination blockchain')
     parser_transfer.add_argument(
         'token', type=api.TokenSymbol,
-        help='symbol of the Pantos-supported token to be transferred')
+        help='symbol of the Vision-supported token to be transferred')
     parser_transfer.add_argument(
         'amount', type=decimal.Decimal,
         help='amount of tokens to be transferred to the recipient')
@@ -216,8 +216,8 @@ def _execute_command_create_config(arguments: argparse.Namespace) -> None:
 
     path.mkdir(parents=True, exist_ok=True)
 
-    # List and copy all .env files from the pantos resource directory
-    resource_path = importlib.resources.files('pantos')
+    # List and copy all .env files from the vision resource directory
+    resource_path = importlib.resources.files('vision')
     for env_file in resource_path.iterdir():
         env_file_path = pathlib.Path(env_file.name)
         if env_file_path.suffix == '.env':
@@ -261,11 +261,11 @@ def _print_bids(
         service_node_bids: typing.Dict[api.BlockchainAddress,
                                        typing.List[api.ServiceNodeBid]]) \
         -> None:
-    print('Pantos service node bids for token transfers from the\n'
+    print('Vision service node bids for token transfers from the\n'
           f'source blockchain {source_blockchain.name} to the destination '
           f'blockchain {destination_blockchain.name}:\n')  # noqa E231
     print('Service node\t\t\t\t\tTime\tFee')
-    print('\t\t\t\t\t\t(s)\t(PAN)')
+    print('\t\t\t\t\t\t(s)\t(VSN)')
     print('==================================='
           '==================================')
     for service_node_address, bids in service_node_bids.items():
@@ -283,7 +283,7 @@ def _print_transfer_inputs(source_blockchain: api.Blockchain,
                            service_node_address: typing.Optional[
                                api.BlockchainAddress] = None,
                            bid_id: typing.Optional[int] = None) -> None:
-    print('New Pantos transfer:\n')
+    print('New Vision transfer:\n')
     print(f'Source blockchain:\t{source_blockchain.name}')  # noqa E231
     print(f'Destination blockchain:'  # noqa E231
           f'\t{destination_blockchain.name}')
