@@ -71,7 +71,7 @@ wheel:
 
 .PHONY: docker
 docker:
-	docker build -t visionio/vision-client .
+	docker build -t dockerweb3foundation/vision-client .
 
 .PHONY: install
 install: dist/vision_client_cli-$(VISION_CLIENT_CLI_VERSION)-py3-none-any.whl
@@ -112,6 +112,6 @@ clean:
 	rm -r -f build/
 	rm -r -f dist/
 	rm -r -f vision_client_cli.egg-info/
-ifneq ($(shell docker images -q visionio/vision-client 2>/dev/null),)
-	docker rmi -f visionio/vision-client
+ifneq ($(shell docker images -q visionweb3foundation/vision-client 2>/dev/null),)
+	docker rmi -f dockerweb3foundation/vision-client
 endif
