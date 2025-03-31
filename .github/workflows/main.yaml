@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: Build and attach .deb and .whl package
-    if: github.repository == 'vision-web3-foundation/client-cli'
+    if: github.repository == 'vision-web3/client-cli'
     uses: ./.github/workflows/build.yaml
     secrets: 'inherit'
     with:
@@ -16,7 +16,7 @@ jobs:
 
   publish-docker:
     uses: ./.github/workflows/publish-docker.yaml
-    if: github.repository == 'vision-web3-foundation/client-cli'
+    if: github.repository == 'vision-web3/client-cli'
     needs: build
     secrets: 'inherit'
     with:

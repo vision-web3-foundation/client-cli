@@ -2,7 +2,7 @@
 name = "vision-client-cli"
 version = "0.1.0"
 description = "Client CLI for engaging with the Vision system"
-authors = ["Vision GmbH <contact@vision.io>"]
+authors = ["XXXX"]
 license = "GPL-3.0-only"
 readme = "README.md"
 packages = [

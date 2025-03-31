@@ -3,7 +3,7 @@ protocol:
     testnet: !ENV ${PROTOCOL_TESTNET:0.1.0}
 
 token_creator:
-    url: !ENV ${TOKEN_CREATOR_URL:https://creatorb.testnet.vision.io}
+    url: !ENV ${TOKEN_CREATOR_URL:https://creatorb.testnet.vsnw3}
 
 service_nodes:
     timeout: !ENV tag:yaml.org,2002:float ${SERVICE_NODES_TIMEOUT:5}

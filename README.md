@@ -1,7 +1,7 @@
-<img src="https://raw.githubusercontent.com/vision-web3-foundation/client-cli/img/vision-logo.png" alt="Vision logo" align="right" width="120" />
+<img src="https://raw.githubusercontent.com/vision-web3/client-cli/img/vision-logo.png" alt="Vision logo" align="right" width="120" />
 
-[![CI](https://github.com/vision-web3-foundation/client-cli/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/vision-web3-foundation/client-cli/actions/workflows/ci.yaml) 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vision-web3-foundation_client-cli&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vision-web3-foundation_client-cli)
+[![CI](https://github.com/vision-web3/client-cli/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/vision-web3/client-cli/actions/workflows/ci.yaml) 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vision-web3_client-cli&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vision-web3_client-cli)
 
 # Vision Client CLI
 
@@ -64,7 +64,7 @@ poetry config virtualenvs.in-project true
 Clone the repository to your local machine:
 
 ```bash
-$ git clone https://github.com/vision-web3-foundation/client-cli.git
+$ git clone https://github.com/vision-web3/client-cli.git
 $ cd client-cli
 $ virtualenv env
 $ source env/bin/activate

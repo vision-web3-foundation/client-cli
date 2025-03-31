@@ -2,15 +2,15 @@ name: cli
 
 services:
   cli:
-    image: vision-web3-foundation/client-cli:latest
+    image: vision-web3/client-cli:latest
     build:
       context: .
       dockerfile: Dockerfile
       target: production
       x-bake:
         tags:
-          - ${DOCKER_REGISTRY-vision-web3-foundation}/client-cli:${DOCKER_TAG-local}
-          - ${DOCKER_REGISTRY-vision-web3-foundation}/client-cli:${EXTRA_TAG-local}
+          - ${DOCKER_REGISTRY-vision-web3}/client-cli:${DOCKER_TAG-local}
+          - ${DOCKER_REGISTRY-vision-web3}/client-cli:${EXTRA_TAG-local}
     environment:
       - environment=testnet
     command: ["--help"]
