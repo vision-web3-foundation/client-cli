@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "vision-client-cli"
-version = "0.1.0"
+version = "0.2.0"
 description = "Client CLI for engaging with the Vision system"
-authors = ["XXXX"]
+authors = ["Vision"]
 license = "GPL-3.0-only"
 readme = "README.md"
 packages = [
@@ -30,7 +30,6 @@ flake8 = "7.1.1"
 isort = "5.13.2"
 mypy = "1.0.1"
 types-pyyaml = "6.0.12.20240917"
-types-requests = "2.32.0.20241016"
 yapf = "0.40.2"
 
 [tool.poetry.group.dev.dependencies]
@@ -38,13 +37,11 @@ pre-commit = "4.0.1"
 
 [tool.poetry.dependencies]
 python = "^3.13"
-vision-common = "0.1.0"
-vision-client-library = "0.1.0"
+vision-common = "0.3.1"
+vision-client-library = "0.2.0"
 Cerberus = "1.3.4"
 PyYAML = "6.0.1"
 requests = "2.32.3"
-web3 = "6.5.0"
-pyaml-env = "1.2.1"
 python-dotenv = "1.0.1"
 
 [build-system]
