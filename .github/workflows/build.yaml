@@ -35,7 +35,7 @@ jobs:
 
       - name: Build package
         run: |
-          make check-version VERSION=${{ needs.define-environment.outputs.version }}
+          make check-version VERSION=${{ inputs.version }}
           make build
 
       - name: Freeze dependencies
