@@ -126,7 +126,7 @@ jobs:
             rm -f external-release/$file
           done
 
-      - uses: sigstore/gh-action-sigstore-python@v3
+      - uses: sigstore/gh-action-sigstore-python@f514d46b907ebcd5bedc05145c03b69c1edd8b46 # v3.0.0
         with:
           inputs: external-release/*
 
