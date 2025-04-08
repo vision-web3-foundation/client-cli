@@ -2,7 +2,7 @@ name: cli
 
 services:
   cli:
-    image: vsnw3/client-cli:latest
+    image: ${DOCKER_REGISTRY-vsnw3}/client-cli:latest
     build:
       context: .
       dockerfile: Dockerfile
