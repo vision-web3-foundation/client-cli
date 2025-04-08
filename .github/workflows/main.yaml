@@ -10,9 +10,6 @@ jobs:
     if: github.repository == 'vision-web3/client-cli'
     uses: ./.github/workflows/build.yaml
     secrets: 'inherit'
-    with:
-      version: development
-      environment: main
 
   publish-docker:
     uses: ./.github/workflows/publish-docker.yaml
