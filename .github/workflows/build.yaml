@@ -6,7 +6,7 @@ on:
         description: 'Version to build'
         required: false
         type: string
-        default: "1.0.0"
+        default: "dev"
       environment:
         description: 'Environment where the secrets are stored'
         required: false
@@ -39,9 +39,13 @@ jobs:
 
       - uses: vision-web3/ci-workflows/.github/actions/install-poetry@v1
 
-      - name: Build package
+      - name: Check version
+        if: ${{ inputs.version != 'dev' }}
         run: |
           make check-version VERSION=${{ inputs.version }}
+
+      - name: Build package
+        run: |
           make build
 
       - name: Freeze dependencies
