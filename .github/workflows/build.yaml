@@ -18,11 +18,17 @@ on:
       GPG_PASSPHRASE:
         description: 'GPG passphrase'
         required: false
+    outputs:
+      version: 
+        description: 'Version of the built package'
+        value: ${{ jobs.build.outputs.version }}
 
 jobs:
   build:
     name: Build Package
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.is-signed-build.outputs.built-version }}
     steps:
       - uses: step-security/harden-runner@v2
         with:
